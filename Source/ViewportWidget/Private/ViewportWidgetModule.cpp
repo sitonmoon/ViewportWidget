@@ -329,6 +329,20 @@ private:
 	friend class FCustomViewportClient;
 };
 
+FCustomUMGViewportClient::FCustomUMGViewportClient(FPreviewScene* InPreviewScene)
+{
+	PreviewScene = InPreviewScene;
+}
+
+FCustomUMGViewportClient::~FCustomUMGViewportClient()
+{
+}
+
+#if ENGINE_MAJOR_VERSION >= 5
+
+const EViewModeIndex FCustomViewportClient::DefaultPerspectiveViewMode = VMI_Lit;
+const EViewModeIndex FCustomViewportClient::DefaultOrthoViewMode = VMI_BrushWireframe;
+
 static int32 ViewOptionIndex = 0;
 static TArray<ECustomViewportType> ViewOptions;
 
@@ -350,9 +364,6 @@ void InitViewOptionsArray()
 	ViewOptions.Add(Left);
 	ViewOptions.Add(Right);
 }
-
-const EViewModeIndex FCustomViewportClient::DefaultPerspectiveViewMode = VMI_Lit;
-const EViewModeIndex FCustomViewportClient::DefaultOrthoViewMode = VMI_BrushWireframe;
 
 float ComputeOrthoZoomFactor(const float ViewportWidth)
 {
@@ -377,15 +388,6 @@ namespace CustomViewportDefs_NM
 {
 	/** Default camera field of view angle for level editor perspective viewports */
 	const float DefaultPerspectiveFOVAngle(90.0f);
-}
-
-FCustomUMGViewportClient::FCustomUMGViewportClient(FPreviewScene* InPreviewScene)
-{
-	PreviewScene = InPreviewScene;
-}
-
-FCustomUMGViewportClient::~FCustomUMGViewportClient()
-{
 }
 
 FCustomViewportClient::FCustomViewportClient(FPreviewScene* InPreviewScene, const TWeakPtr<SViewportWidget>& InViewportWidget)
@@ -1268,6 +1270,7 @@ float FCustomViewportClient::UpdateViewportClientWindowDPIScale() const
 
 	return DPIScale;
 }
+#endif
 
 //------------------------------------------------------
 // FViewportWidgetModule

@@ -4,8 +4,6 @@
 
 #if ENGINE_MAJOR_VERSION >= 5
 #include "ViewportClient.h"
-#else
-#include "EditorViewportClient.h"
 #endif
 #include "SceneTypes.h"
 #include "UObject/GCObject.h"
@@ -90,6 +88,7 @@ public:
 	};
 };
 
+#if ENGINE_MAJOR_VERSION >= 5
 class VIEWPORTWIDGET_API FCustomViewportClient : public FCommonViewportClient, public FViewElementDrawer
 {
 public:
@@ -575,3 +574,4 @@ private:
 	/** If true, we are in Game View mode*/
 	bool bInGameViewMode;
 };
+#endif
