@@ -31,6 +31,7 @@ public:
 		, _EnableGammaCorrection(true)
 		, _ReverseGammaCorrection(false)
 		, _EnableBlending(false)
+		, _InvertAlpha(false)
 		, _EnableStereoRendering(false)
 		, _PreMultipliedAlpha(true)
 		, _IgnoreTextureAlpha(true)
@@ -59,6 +60,9 @@ public:
 
 		/** Allow this viewport to blend with its background. */
 		SLATE_ARGUMENT( bool, EnableBlending )
+
+		/** blend use invert alpha. */
+		SLATE_ARGUMENT(bool, InvertAlpha)
 
 		/** Whether or not to enable stereo rendering. */
 		SLATE_ARGUMENT(bool, EnableStereoRendering )
@@ -289,6 +293,9 @@ private:
 
 	/** Whether or not to blend this viewport with the background. */
 	bool bEnableBlending;
+
+	/** blend use invert alpha. */
+	bool bInvertAlpha;
 
 	/** Whether or not to enable stereo rendering. */
 	bool bEnableStereoRendering;

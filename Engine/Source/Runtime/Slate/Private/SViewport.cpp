@@ -43,6 +43,7 @@ void SViewport::Construct( const FArguments& InArgs )
 	bEnableGammaCorrection = InArgs._EnableGammaCorrection;
 	bReverseGammaCorrection = InArgs._ReverseGammaCorrection;
 	bEnableBlending = InArgs._EnableBlending;
+	bInvertAlpha = InArgs._InvertAlpha;
 	bEnableStereoRendering = InArgs._EnableStereoRendering;
 	bIgnoreTextureAlpha = InArgs._IgnoreTextureAlpha;
 	bPreMultipliedAlpha = InArgs._PreMultipliedAlpha;
@@ -113,6 +114,13 @@ int32 SViewport::OnPaint( const FPaintArgs& Args, const FGeometry& AllottedGeome
 	{
 		DrawEffects |= ESlateDrawEffect::NoBlending;
 	}
+
+	// Should we invert alpha?
+	if (bInvertAlpha)
+	{
+		DrawEffects |= ESlateDrawEffect::InvertAlpha;
+	}
+
 	// Should we use pre-multiplied alpha?
 	else if( bPreMultipliedAlpha )
 	{
