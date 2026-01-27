@@ -57,7 +57,7 @@ bool IsNotEqual(const TArray<FViewportWidgetEntry>& A, const TArray<FViewportWid
 
 SViewportWidget::SViewportWidget() 
 	:PreviewScene(MakeShareable(new FPreviewScene(
-		FPreviewScene::ConstructionValues().SetCreateDefaultLighting(true).SetEditor(false).SetForceMipsResident(true)
+		FPreviewScene::ConstructionValues().SetOwningGameInstance(NewObject<UGameInstance>()).SetCreatePhysicsScene(false).SetCreateDefaultLighting(true).SetEditor(true).SetForceMipsResident(true)
 	))){}
 
 void SViewportWidget::Construct(const FArguments& InArgs)
@@ -65,6 +65,8 @@ void SViewportWidget::Construct(const FArguments& InArgs)
 	SViewport::FArguments ParentArgs;
 	ParentArgs.IgnoreTextureAlpha(false);
 	ParentArgs.EnableGammaCorrection(false); //注意:这里关闭Gamma矫正 否则Widget上会过曝
+	ParentArgs.EnableBlending(true);
+	ParentArgs.InvertAlpha(true);
 	//ParentArgs.RenderDirectlyToWindow(true);
 	SViewport::Construct(ParentArgs);
 
