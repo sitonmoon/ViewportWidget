@@ -21,6 +21,7 @@
 ![Preview](https://pica.zhimg.com/80/v2-f8cbc05f7be8d46e54f8fae8025aee86_1440w.webp)
 
 **优化-背景透明(PropagateAlpha)**：
+![Preview](https://github.com/user-attachments/assets/eafe04e2-323f-4661-a2a7-af4bead55b3e)  
 <img width="1303" height="630" alt="image" src="https://github.com/user-attachments/assets/aa3bd89e-cc77-491a-9b7d-50b979285d91" />
  - 文档：[UE4后处理中的PropagateAlpha - 在Tonemap中保留Alpha](https://zhuanlan.zhihu.com/p/1999223344109728919)
  - Diff(Engine):[sitonmoon/ViewportWidget@ba4f0a8](https://github.com/sitonmoon/ViewportWidget/commit/ba4f0a85282e8ff12143f7a1b916c81377e6581c)
